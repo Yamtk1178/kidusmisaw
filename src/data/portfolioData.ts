@@ -286,7 +286,7 @@ export const PROJECTS: Project[] = [
       "Subtle micro-animations with Framer Motion adhering to prefers-reduced-motion",
     ],
     technologies: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion", "Lucide React"],
-    githubUrl: "https://github.com/Yamtk1178/portfolio-website",
+    githubUrl: "https://github.com/Yamtk1178/kidusmisaw",
     status: "completed",
     statusLabel: "Active Project",
     featured: false,

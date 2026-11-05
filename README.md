@@ -37,7 +37,7 @@ A modern, high-performance developer portfolio built from scratch for **Kidus Mi
 ## 📁 Project Structure
 
 ```
-portfolio-website/
+kidusmisaw/
 ├── public/
 │   ├── image/
 │   │   └── profile.jpg           # High-resolution verified profile photo
@@ -88,7 +88,7 @@ portfolio-website/
 
 1. Clone or navigate to the repository:
    ```bash
-   cd portfolio-website
+   cd kidusmisaw
    ```
 
 2. Install dependencies:
