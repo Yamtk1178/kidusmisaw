@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kidus Misaw — CV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* ===== RESET ===== */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --primary: #0d6efd;
+            --dark:    #0d1117;
+            --text:    #1a1a2e;
+            --muted:   #555;
+            --border:  #dde3ec;
+            --bg:      #f5f7fb;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        /* ===== PRINT BUTTON ===== */
+        .print-bar {
+            background: var(--dark);
+            padding: 12px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .print-bar span {
+            color: #8b949e;
+            font-size: 0.85rem;
+        }
+
+        .print-bar a {
+            color: #8b949e;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .print-bar a:hover { color: white; }
+
+        .btn-print {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            font-family: inherit;
+            transition: background 0.2s;
+        }
+
+        .btn-print:hover { background: #0a58ca; }
+
+        /* ===== CV WRAPPER ===== */
+        .cv-page {
+            max-width: 860px;
+            margin: 30px auto 50px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+        }
+
+        /* ===== HEADER ===== */
+        .cv-header {
+            background: linear-gradient(135deg, #0d1117 0%, #0d2052 100%);
+            color: white;
+            padding: 40px 50px;
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .cv-photo {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary);
+            flex-shrink: 0;
+            box-shadow: 0 0 20px rgba(13,110,253,0.5);
+        }
+
+        .cv-photo-placeholder {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: rgba(13,110,253,0.2);
+            border: 3px solid var(--primary);
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: var(--primary);
+        }
+
+        .cv-name-block h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+        }
+
+        .cv-name-block h1 span { color: var(--primary); }
+
+        .cv-name-block h2 {
+            font-size: 1rem;
+            font-weight: 400;
+            color: #8b949e;
+            margin-top: 5px;
+        }
+
+        .cv-contacts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px 25px;
+            margin-top: 18px;
+        }
+
+        .cv-contacts a,
+        .cv-contacts span {
+            color: #c9d1d9;
+            text-decoration: none;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 7px;
+        }
+
+        .cv-contacts i { color: var(--primary); font-size: 0.9rem; }
+
+        .cv-contacts a:hover { color: white; }
+
+        /* ===== BODY ===== */
+        .cv-body {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+        }
+
+        /* ===== SIDEBAR ===== */
+        .cv-sidebar {
+            background: #f0f4ff;
+            padding: 35px 28px;
+            border-right: 1px solid var(--border);
+        }
+
+        /* ===== MAIN ===== */
+        .cv-main {
+            padding: 35px 40px;
+        }
+
+        /* ===== SECTION ===== */
+        .cv-section {
+            margin-bottom: 30px;
+        }
+
+        .cv-section:last-child { margin-bottom: 0; }
+
+        .cv-section-title {
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--primary);
+            border-bottom: 2px solid var(--primary);
+            padding-bottom: 6px;
+            margin-bottom: 16px;
+        }
+
+        /* ===== PROFILE ===== */
+        .cv-profile p {
+            color: var(--muted);
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+
+        /* ===== SKILLS ===== */
+        .skill-item {
+            margin-bottom: 10px;
+        }
+
+        .skill-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: var(--text);
+        }
+
+        .skill-bar {
+            height: 6px;
+            background: #dde3ec;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .skill-bar-fill {
+            height: 100%;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+
+        /* ===== LANGUAGES ===== */
+        .lang-item {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            padding: 5px 0;
+            border-bottom: 1px solid var(--border);
+            color: var(--text);
+        }
+
+        .lang-level {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        /* ===== INTERESTS ===== */
+        .interest-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 7px;
+        }
+
+        .interest-tags span {
+            background: white;
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 4px 11px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+
+        /* ===== EDUCATION / EXPERIENCE ===== */
+        .cv-entry {
+            margin-bottom: 22px;
+            position: relative;
+            padding-left: 15px;
+        }
+
+        .cv-entry::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 6px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        .cv-entry-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .cv-entry-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .cv-entry-date {
+            font-size: 0.78rem;
+            color: var(--primary);
+            font-weight: 600;
+            background: rgba(13,110,253,0.08);
+            padding: 2px 9px;
+            border-radius: 10px;
+        }
+
+        .cv-entry-sub {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        .cv-entry ul {
+            margin-top: 8px;
+            padding-left: 16px;
+        }
+
+        .cv-entry ul li {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-bottom: 4px;
+        }
+
+        /* ===== PROJECTS ===== */
+        .cv-project {
+            background: #f8faff;
+            border: 1px solid var(--border);
+            border-left: 3px solid var(--primary);
+            border-radius: 6px;
+            padding: 14px 16px;
+            margin-bottom: 14px;
+        }
+
+        .cv-project-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .cv-project h4 {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: var(--text);
+        }
+
+        .cv-project a {
+            font-size: 0.8rem;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .cv-project a:hover { text-decoration: underline; }
+
+        .cv-project p {
+            font-size: 0.83rem;
+            color: var(--muted);
+            margin-top: 6px;
+        }
+
+        .cv-project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 8px;
+        }
+
+        .cv-project-tags span {
+            background: rgba(13,110,253,0.08);
+            color: var(--primary);
+            padding: 2px 9px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            border: 1px solid rgba(13,110,253,0.2);
+        }
+
+        /* ===== CERTIFICATIONS ===== */
+        .cert-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .cert-item i {
+            color: var(--primary);
+            margin-top: 3px;
+        }
+
+        .cert-item span {
+            font-size: 0.85rem;
+            color: var(--text);
+        }
+
+        /* ===== PRINT ===== */
+        @media print {
+            .print-bar { display: none; }
+            body { background: white; }
+            .cv-page {
+                max-width: 100%;
+                margin: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .cv-header { flex-direction: column; text-align: center; padding: 30px 25px; }
+            .cv-contacts { justify-content: center; }
+            .cv-body { grid-template-columns: 1fr; }
+            .cv-sidebar { border-right: none; border-bottom: 1px solid var(--border); }
+            .cv-main { padding: 25px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top bar -->
+    <div class="print-bar">
+        <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+        <span>Kidus Misaw — Curriculum Vitae</span>
+        <button class="btn-print" onclick="window.print()">
+            <i class="fas fa-print"></i> Print / Save PDF
+        </button>
+    </div>
+
+    <div class="cv-page">
+
+        <!-- Header -->
+        <div class="cv-header">
+            <!-- Replace with real photo once added to images folder -->
+            <img src="image/profile.jpg" alt="Kidus Misaw" class="cv-photo"
+                 onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+            <div class="cv-photo-placeholder" style="display:none;">
+                <i class="fas fa-user"></i>
+            </div>
+
+            <div class="cv-name-block">
+                <h1>Kidus <span>Misaw</span></h1>
+                <h2>Software Engineering Student &nbsp;|&nbsp; Web Developer &nbsp;|&nbsp; Network Enthusiast</h2>
+                <div class="cv-contacts">
+                    <a href="mailto:kidusmisaw7@gmail.com">
+                        <i class="fas fa-envelope"></i> kidusmisaw7@gmail.com
+                    </a>
+                    <a href="tel:+251915597913">
+                        <i class="fas fa-phone"></i> +251 915 597 913
+                    </a>
+                    <a href="https://github.com/Yamtk1178" target="_blank">
+                        <i class="fab fa-github"></i> github.com/Yamtk1178
+                    </a>
+                    <span>
+                        <i class="fas fa-map-marker-alt"></i> Debre Birhan, Ethiopia
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div class="cv-body">
+
+            <!-- Sidebar -->
+            <aside class="cv-sidebar">
+
+                <!-- Skills -->
+                <div class="cv-section">
+                    <div class="cv-section-title">Technical Skills</div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>HTML & CSS</span><span>90%</span></div>
+                        <div class="skill-bar"><div class="skill-bar-fill" style="width:90%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>JavaScript</span><span>75%</span></div>
+                        <div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>Java</span><span>70%</span></div>
+                        <div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>Kotlin</span><span>65%</span></div>
+                        <div class="skill-bar"><div class="skill-bar-fill" style="width:65%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>C#</span><span>65%</span></div>
+                        <div class="skill-bar"><div class="skill-bar-fill" style="width:65%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>SQL</span><span>70%</span></div>
+                        <div class="skill-bar"><div class="skill-bar-fill" style="width:70%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>Networking / Cisco</span><span>80%</span></div>
+                        <div class="skill-bar"><div class="skill-bar-fill" style="width:80%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>Cypress (QA)</span><span>60%</span></div>
+                        <div class="skill-bar"><div class="skill-bar-fill" style="width:60%"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-label"><span>Git & GitHub</span><span>75%</span></div>
+                        <div class="skill-bar"><div class="skill-bar-fill" style="width:75%"></div></div>
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div class="cv-section">
+                    <div class="cv-section-title">Languages</div>
+                    <div class="lang-item"><span>Amharic</span><span class="lang-level">Native</span></div>
+                    <div class="lang-item"><span>English</span><span class="lang-level">Professional</span></div>
+                </div>
+
+                <!-- Interests -->
+                <div class="cv-section">
+                    <div class="cv-section-title">Interests</div>
+                    <div class="interest-tags">
+                        <span>Web Development</span>
+                        <span>Networking</span>
+                        <span>Cybersecurity</span>
+                        <span>Software Testing</span>
+                        <span>Open Source</span>
+                        <span>Android Dev</span>
+                    </div>
+                </div>
+
+            </aside>
+
+            <!-- Main -->
+            <main class="cv-main">
+
+                <!-- Profile Summary -->
+                <div class="cv-section cv-profile">
+                    <div class="cv-section-title">Profile</div>
+                    <p>
+                        Motivated and detail-oriented 4th Year Software Engineering student at
+                        Debre Birhan University with hands-on experience in web development,
+                        enterprise network design, and software quality assurance. Passionate about
+                        building clean, functional software and well-structured networks.
+                        Eager to contribute to real-world projects and grow in a professional environment.
+                    </p>
+                </div>
+
+                <!-- Education -->
+                <div class="cv-section">
+                    <div class="cv-section-title">Education</div>
+                    <div class="cv-entry">
+                        <div class="cv-entry-header">
+                            <div class="cv-entry-title">B.Sc. in Software Engineering</div>
+                            <div class="cv-entry-date">2022 – Present</div>
+                        </div>
+                        <div class="cv-entry-sub">Debre Birhan University &nbsp;·&nbsp; Debre Birhan, Ethiopia</div>
+                        <ul>
+                            <li>4th Year student — expected graduation 2026</li>
+                            <li>Relevant coursework: Data Structures, Algorithms, Database Systems,
+                                Fundamentals of Networking, Software Testing, OOP</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Projects -->
+                <div class="cv-section">
+                    <div class="cv-section-title">Projects</div>
+
+                    <div class="cv-project">
+                        <div class="cv-project-header">
+                            <h4>Haile Hotels Network Design</h4>
+                            <a href="https://github.com/Yamtk1178/Networking-Project" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                        <p>Designed and simulated an enterprise network for a 500+ user hotel using Cisco Packet Tracer.
+                           Implemented VLANs, OSPF, DHCP, NAT/PAT, SSH remote access, and ACLs across a
+                           hierarchical three-layer architecture.</p>
+                        <div class="cv-project-tags">
+                            <span>Cisco Packet Tracer</span><span>VLAN</span><span>OSPF</span>
+                            <span>DHCP</span><span>NAT</span><span>SSH</span><span>ACL</span>
+                        </div>
+                    </div>
+
+                    <div class="cv-project">
+                        <div class="cv-project-header">
+                            <h4>QA Automation — Cypress</h4>
+                            <a href="https://github.com/Yamtk1178/Quality-Assurance-Project" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                        <p>Built an end-to-end UI test automation workspace with Cypress and JavaScript.
+                           Covers element interaction, fixture-based data handling, and headless test execution.</p>
+                        <div class="cv-project-tags">
+                            <span>JavaScript</span><span>Cypress</span><span>E2E Testing</span><span>npm</span>
+                        </div>
+                    </div>
+
+                    <div class="cv-project">
+                        <div class="cv-project-header">
+                            <h4>Library Management System</h4>
+                            <a href="https://github.com/Yamtk1178/kotlin__gradle_project" target="_blank">
+                                <i class="fab fa-github"></i> GitHub
+                            </a>
+                        </div>
+                        <p>Console-based Library Management System in Kotlin with Gradle. Features patron
+                           registration, book borrowing/returning, and search using a clean layered architecture.</p>
+                        <div class="cv-project-tags">
+                            <span>Kotlin</span><span>Gradle</span><span>OOP</span><span>CLI App</span>
+                        </div>
+                    </div>
+
+                    <div class="cv-project">
+                        <div class="cv-project-header">
+                            <h4>Taxi Booking Website</h4>
+                            <span style="font-size:0.78rem; color:#f85149; font-weight:600;">Coming Soon on GitHub</span>
+                        </div>
+                        <p>Responsive taxi booking website with a modern UI built using HTML, CSS and JavaScript.</p>
+                        <div class="cv-project-tags">
+                            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Certifications / Courses -->
+                <div class="cv-section">
+                    <div class="cv-section-title">Courses &amp; Training</div>
+                    <div class="cert-item">
+                        <i class="fas fa-certificate"></i>
+                        <span>Fundamentals of Networking — Debre Birhan University (Cisco Packet Tracer)</span>
+                    </div>
+                    <div class="cert-item">
+                        <i class="fas fa-certificate"></i>
+                        <span>Software Quality Assurance — Cypress E2E Automation</span>
+                    </div>
+                    <div class="cert-item">
+                        <i class="fas fa-certificate"></i>
+                        <span>Kotlin &amp; Gradle — Android / JVM Application Development</span>
+                    </div>
+                </div>
+
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>
